@@ -2,6 +2,7 @@
 .git
 node_modules
 tmp
+functions/node_modules
 
 # IDEs and editors
 /.idea

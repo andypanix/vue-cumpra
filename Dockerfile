@@ -8,8 +8,7 @@ ENV YARN_CACHE_FOLDER /cache
 
 # Build functions
 COPY functions/package.json /functions/
-RUN cd /functions && yarn global add firebase-functions \
-    && yarn install
+RUN cd /functions && yarn install
 
 # Install our dependencies
 RUN yarn global add firebase-tools \
@@ -21,6 +20,5 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 WORKDIR /app
-
 
 EXPOSE 8080
