@@ -173,7 +173,7 @@
 <script>
   import { ApiAiClient } from 'api-ai-javascript'
 
-  const client = new ApiAiClient({accessToken: ''})
+  const client = new ApiAiClient({accessToken: '2a770e99ee034577a5c2c89e3dfc9a2b'})
   export default {
     name: 'app',
     data: function () {
