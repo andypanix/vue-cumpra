@@ -193,11 +193,12 @@
           this.handle(response) // <- handle the response in handle() method
           this.query = ''
           this.speech = 'Go ahead, im listening...' // <- reset query and speech
-          //window.scrollTo(0, document.body.scrollHeight) <- Uncomment this if you want autoscroll
+          window.scrollTo(0, document.body.scrollHeight) // <- Uncomment this if you want autoscroll
         })
       },
       handle (response) {
-        if (response.result.fulfillment.speech || response.result.fulfillment.messages[0].type == 'simple_response' && this.muted == false) {
+        let responseCondition = response.result.fulfillment.speech || response.result.fulfillment.messages[0].type === 'simple_response'
+        if (responseCondition && this.muted === false) {
           let speech = new SpeechSynthesisUtterance(response.result.fulfillment.speech || response.result.fulfillment.messages[0].textToSpeech)
           speech.voiceURI = 'native'
           speech.lang = 'it-IT' // <- Nice british accent
@@ -214,7 +215,8 @@
       microphone (mode) {
         this.micro = mode
         let self = this // <- correct scope
-        if (mode == true) {
+        if (mode === true) {
+          // eslint-disable-next-line
           let recognition = new webkitSpeechRecognition() // <- chrome speech recognition
           recognition.interimResults = true
           recognition.lang = 'it-IT'
