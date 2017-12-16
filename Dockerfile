@@ -7,8 +7,9 @@ ENV NODE_ENV development
 ENV YARN_CACHE_FOLDER /cache
 
 # Build functions
-COPY functions/package.json functions/yarn.lock /functions/
-RUN cd /functions && npm install
+COPY functions/package.json /functions/
+RUN cd /functions && yarn global add firebase-functions \
+    && yarn install
 
 # Install our dependencies
 RUN yarn global add firebase-tools \

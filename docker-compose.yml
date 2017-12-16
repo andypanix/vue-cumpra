@@ -13,4 +13,5 @@ services:
       - NODE_ENV=development
       - PORT=8080
       - HOST=0.0.0.0
+      - FIREBASE_TOKEN=${FIREBASE_TOKEN}
     working_dir: /app
